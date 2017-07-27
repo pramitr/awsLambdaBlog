@@ -45,3 +45,4 @@ install/install_config.js
 install/install_test.json
 install/lambda_config.json
 credentials.csv
+credentials.json
