@@ -7,7 +7,6 @@
  * [About](#about)
  * [Installation prerequisites](#prerequisites)
  * [Installation](#installation)
- * [Advanced installation](#installation_advanced)
 
 ## <a name="about"></a>About
  ![alt tag](https://s3-us-west-2.amazonaws.com/s-media.si/static/img/LBP_perspective_UI.jpg)
