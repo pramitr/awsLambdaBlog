@@ -61,7 +61,7 @@ exports.handler = (event, context, callback) => {
                 website_title: settings.website_title,
                 header_title: settings.header_title,
                 header_desc: settings.header_desc,
-                
+                post: post,
                 site_base_url: site_base_url,
                 categories: categories,
                 template_settings: settings.template,

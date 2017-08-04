@@ -59,6 +59,14 @@ exports.handler = (event, context, callback) => {
             }
         }
 
+        var category_title = ''
+        for(var i = 0; i < categories.length; i++) {
+            if(categories[i].category_id === category_id) {
+                category_title = categories[i].category;
+                break;
+            }
+        }
+
         for(var i = 0; i < posts.length; i++){
             if(posts[i].categories.indexOf(category_id) == -1){
                 posts.splice(i, 1);
@@ -85,7 +93,7 @@ exports.handler = (event, context, callback) => {
                 website_title: settings.website_title,
                 header_title: settings.header_title,
                 header_desc: settings.header_desc,
-                
+                category_title: category_title,
                 site_base_url: site_base_url,
                 categories: categories,
                 template_settings: settings.template,

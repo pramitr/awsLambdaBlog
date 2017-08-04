@@ -76,6 +76,7 @@ exports.handler = function(event, context) {
 				}
 			}, function(err, data) {
 				if(err){
+					console.log("Error sending SES email",err);
 					reject(err);
 				}else{
 					resolve();

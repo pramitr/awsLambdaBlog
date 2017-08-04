@@ -133,15 +133,13 @@ body{
 }
 
 .toolbox{
-	flex: 0 0 43px;
-	padding-bottom: 30px;
     overflow: scroll;
 	overflow-x: hidden;
 }
 
 .submit_post_panel{
 	position: fixed;
-	height: 322px;
+	height: 325px;
 	width: 100%;
 	bottom: -300px;
 	margin: 0px;
@@ -151,14 +149,14 @@ body{
 
 .send_button{
 	position: absolute;
-	top: -43px;
+	top: -90px;
 	right: 10px;
 }
 
 .back_button{
     position: absolute;
-    top: -25px;
-    right: 58px;
+    top: -70px;
+    right: 75px;
 }
 
 .lock_icon{
@@ -381,4 +379,8 @@ height: 1000px;
 
 .post_sidebar_menu{
 	padding: 0 15px;
+}
+
+.ct-widget .ct-attribute__name, .ct-widget .ct-attribute__value, .ct-widget .ct-video-dialog__input {
+    box-sizing: inherit;
 }

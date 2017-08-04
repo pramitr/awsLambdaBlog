@@ -3,7 +3,15 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="robots" content="index, follow" />
-		<title>{{=it.website_title}}</title>
+		{{? it.post }}
+		<title>{{=it.post.title}} from Pramit Roy</title>
+		{{?? it.website_title}}
+		<title>Web blog about {{=it.website_title}} from Pramit Roy</title>
+		{{??}}
+		{{?}}
+
+		<meta name="description" content="Stories of the journey of life from Pramit Roy">
+		<meta name="keywords" content="blog, web blog, travel blog, pramit roy, pramit blog, blog stories, travel stories">
 		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0, user-scalable=no">
 		
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
@@ -68,6 +76,24 @@
 					<a href="/"><h1>{{=it.header_title}}</h1>
 					<h2>{{=it.header_desc}}</h2></a>
 				</div>
+
+				<!-- Dropdown Structure -->
+				<ul id="dropdown2" class="dropdown-content">
+					{{ for(var i = 0; i < it.categories.length; i++) { }}
+					<li><a href="/category/{{=it.categories[i].url_title}}/">{{=it.categories[i].category}}</a></li>
+					{{ } }}
+				</ul>
+				<nav>
+					<div class="nav-wrapper">
+						<a href="#!" class="brand-logo">Logo</a>
+						<ul class="left hide-on-med-and-down">
+							<li><a href="/about/">About</a></li>
+							<li><a href="/contact/">Contact</a></li>
+							<!-- Dropdown Trigger -->
+							<li><a class="dropdown-button" href="#!" data-activates="dropdown2">Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+						</ul>
+					</div>
+				</nav>
 				
 				<div class="col s12 m12 l12" style="text-align: right;"">
 					<a class='dropdown-button btn hide-on-med-and-up' style="background-color: {{=it.template_settings.palette.DarkVibrant}}" href='#' data-alignment="right" data-activates='dropdown1' data-constrainwidth="false">
@@ -96,6 +122,10 @@
 					{{ } }}-->
 				  </ul>
 				</div>
+
+
+
+
 
 				
 				<div class="col s6 m6 l6 pagination" style="text-align: left;">

@@ -41,6 +41,7 @@
     "speakingurl": "^9.0.0",
     "supertest": "^2.0.1",
     "uuid": "^2.0.3",
+    "validator": "^8.0.0",
     "webpack": "~1.12.13",
     "webpack-aws-lambda-upload-plugin": "git+https://github.com/sirceljm/webpack-aws-lambda-upload-plugin.git",
     "webpack-to-memory": "^1.0.0"
