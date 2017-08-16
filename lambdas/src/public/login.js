@@ -33,7 +33,6 @@ exports.handler = (event, context, callback) => {
 	});
 
 	function checkPass(admin_pass, user_pass){
-		console.log(admin_pass, user_pass);
 		return new Promise(function(resolve, reject){
 			if(admin_pass == user_pass){
 				resolve();

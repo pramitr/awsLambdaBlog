@@ -33,10 +33,12 @@
 									</style>
 									<script>
 										$(document).ready(function() {
+											$('#send_email_thank_you_modal').modal();
+											$('#captcha_error_modal').modal();
 										    $("#contact_form").submit(function(event){
 										    	event.preventDefault();
 										    	if ($('#g-recaptcha-response').val() !== ""){
-												    $('#send_email_thank_you_modal').openModal();
+												    $('#send_email_thank_you_modal').modal('open');
 											    	$.ajax({
 													  type: "POST",
 													  url: "/send-message",
@@ -56,7 +58,7 @@
 													  contentType: 'application/json; charset=UTF-8'
 													});
 												}else{
-													$('#captcha_error_modal').openModal();
+													$('#captcha_error_modal').modal('open');
 												}
 											});
 										});

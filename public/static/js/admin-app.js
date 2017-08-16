@@ -37,20 +37,25 @@ var checkIfLoggedIn = function(){
 		  if (parts.length == 2) return parts.pop().split(";").shift();
 		}
 		var token = getCookie("token");
-
+		$('#loginModal').modal({
+			dismissible: false
+		});
 		if(token){
 			var decoded = jwt_decode(token);
+			var expiry = decoded.iat * 1000;
+			var curTime = $.now();
+			var timeDiff = (curTime - expiry) / 60000;
 			if(!decoded.logged_in){
-				$('#loginModal').openModal({
-					dismissible: false
-				});
-			}else{
+				$('#loginModal').modal('open');
+			}
+			else if(timeDiff > 30) {
+				$('#loginModal').modal('open');
+			}
+			else{
 				resolve();
 			}
 		}else{
-			$('#loginModal').openModal({
-				dismissible: false
-			});
+			$('#loginModal').modal('open');
 		}
 	})
 }
@@ -62,13 +67,14 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 			  method: 'POST',
 			  url: '/login',
 			  data:{
-				password: $scope.password
+				  password: $scope.password,
+				  remember_me: $scope.remember_me
 			  }
 			}).then(function successCallback(response) {
 				console.log(response);
 				if(response.data.success){
 					init();
-					$("#loginModal").closeModal();
+					$("#loginModal").modal('close');
 				}else{
 					$("#loginModal input").removeClass("valid").addClass("invalid");
 					console.log("wrong passs");
@@ -476,7 +482,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 				 */
 				$scope.templateChange = function(){
 					if($scope.settings.template.header_image == "upload_new"){
-						$('#uploadImageModal').openModal();
+						$('#uploadImageModal').modal('open');
 					}else{
 						var selected_template = _.find($scope.templates, function(o){return o.image == $scope.settings.template.header_image});
 						$scope.settings.template.palette = selected_template.palette;
@@ -491,7 +497,7 @@ app.controller('mainController', ['$scope', '$http', '$timeout', '$cookies',
 						image: image
 					  }
 					}).then(function successCallback(response) {
-						$("#uploadImageModal").closeModal();
+						$("#uploadImageModal").modal('close');
 						$scope.templates.push(response.data.new_template);
 						
 						$timeout(function(){

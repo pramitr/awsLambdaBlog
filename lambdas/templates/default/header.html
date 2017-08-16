@@ -17,14 +17,14 @@
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lora:700i" rel="stylesheet">
 		<link rel="stylesheet" href="/static/js/fontawesome/css/font-awesome.min.css">
-
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="/static/js/materialize/css/materialize.min.css">
 		<link rel="stylesheet" href="/static/css/main.css">
 
 		<script src='/static/js/jquery.min.js'></script>
 		<script src='/static/js/materialize/js/materialize.min.js'></script>
-		
 		<script src='https://www.google.com/recaptcha/api.js'></script>
+		<script type="text/javascript" src="/static/js/mysticky.js"></script>
 
 		<style>
 			.content{
@@ -71,21 +71,12 @@
 	</head>
 	<body>
 		<div class="page_container">
-			<div class="row header">
-				<div class="col s12 m12 l12 title">
-					<a href="/"><h1>{{=it.header_title}}</h1>
-					<h2>{{=it.header_desc}}</h2></a>
-				</div>
 
-				<!-- Dropdown Structure -->
-				<ul id="dropdown2" class="dropdown-content">
-					{{ for(var i = 0; i < it.categories.length; i++) { }}
-					<li><a href="/category/{{=it.categories[i].url_title}}/">{{=it.categories[i].category}}</a></li>
-					{{ } }}
-				</ul>
-				<nav>
-					<div class="nav-wrapper">
-						<a href="#!" class="brand-logo">Logo</a>
+
+			<div class="navbar-fixed">
+				<nav class="w90p">
+					<div class="nav-wrapper content">
+						<a href="#!" class="brand-logo right"><i class="mylogo"></i></a>
 						<ul class="left hide-on-med-and-down">
 							<li><a href="/about/">About</a></li>
 							<li><a href="/contact/">Contact</a></li>
@@ -94,6 +85,19 @@
 						</ul>
 					</div>
 				</nav>
+				<ul id="dropdown2" class="dropdown-content">
+					{{ for(var i = 0; i < it.categories.length; i++) { }}
+					<li><a href="/category/{{=it.categories[i].url_title}}/">{{=it.categories[i].category}}</a></li>
+					{{ } }}
+				</ul>
+			</div>
+
+			<div class="row header">
+
+				<div class="col s12 m12 l12 title">
+					<a href="/"><h1>{{=it.header_title}}</h1>
+					<h2>{{=it.header_desc}}</h2></a>
+				</div>
 				
 				<div class="col s12 m12 l12" style="text-align: right;"">
 					<a class='dropdown-button btn hide-on-med-and-up' style="background-color: {{=it.template_settings.palette.DarkVibrant}}" href='#' data-alignment="right" data-activates='dropdown1' data-constrainwidth="false">
@@ -144,6 +148,21 @@
 				<script type="text/javascript">
 					$(document).ready(function() {
 						$('select').material_select();
+
+						var $stickyMenu = $('.stickymenu');
+						var scrollIntervalID = setInterval(stickIt, 10);
+						var widthOrgElement = $stickyMenu.css('width');
+						var orgElementPos = $stickyMenu.offset();
+						var orgElementTop = orgElementPos.top;
+						var leftOrgElement = orgElementPos.left;
+
+						function stickIt() {
+							if ($(window).scrollTop() >= (orgElementTop)) {
+								$stickyMenu.css('left',leftOrgElement+'px').css('top',0).css('width',widthOrgElement).css('position','fixed').css('top','0').css('margin-top','0');
+							} else {
+								$stickyMenu.css('left','').css('width','').css('position','relative').css('top','').css('margin-top','');
+							}
+						}
 					});
 				</script>
 			</div>

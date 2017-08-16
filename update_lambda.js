@@ -36,7 +36,7 @@ function getFiles(srcpath) {
 function getSelectedPublicEntries(){
   var public_files = getFiles(path.join(__dirname, "./lambdas/src/public"))
     .filter(obj => {
-    	return _.includes(["send_message.js"], obj);
+    	return _.includes(["get.js"], obj);
     }).map(filename => {
 	       return {
 	       	name: filename,
@@ -89,7 +89,7 @@ function getAllEntries() {
     }
 
 
-var entries = getSelectedPublicEntries();
+var entries = getAllPublicEntries();
 
 co(function*(){
 	console.log();
