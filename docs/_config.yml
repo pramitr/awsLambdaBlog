@@ -1,1 +1,3 @@
 theme: jekyll-theme-slate
+title: AWS Lambda and S3 Blog from Pramit
+description: Blogging engine using AWS Lambda function and static contents with S3 
